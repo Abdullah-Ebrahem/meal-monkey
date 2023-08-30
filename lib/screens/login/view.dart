@@ -26,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
         return Scaffold(
           body: SingleChildScrollView(
             child: Form(
+              key: cubit.formKey,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 children: [
@@ -58,6 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Email is required';
+                      } else if (!value.endsWith('@gmail.com')) {
+                        return 'Email must end with @gmail.com';
                       }
                       return null;
                     },
@@ -71,24 +74,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Password is required';
+                      } else if (value.length < 8) {
+                        return 'Password must be greater than 8 digits';
                       }
                       return null;
                     },
                   ),
-                  ProjButton(
-                    title: 'Login',
-                    onPress: () {
-                      if (cubit.login()) {
+                  BlocConsumer<LoginCubit, LoginStates>(
+                    listener: (context, state) {
+                      if (state is LoginFailedState) {
+                        showMsg(msg: state.msg);
+                      }
+                      if (state is LoginSuccessState) {
                         navigateTo(
                             page: const MasterScreen(), withHistory: false);
-                      } else {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            backgroundColor: const Color(0xffFC6011),
-                            content: Text(
-                              'Email not found!',
-                              style: TextStyle(fontSize: 20.sp),
-                            )));
                       }
+                    },
+                    builder: (context, state) {
+                      if (state is LoginLoadingState) {
+                        return const CircularProgressIndicator();
+                      }
+                      return ProjButton(title: 'Login', onPress: cubit.login);
                     },
                   ),
                   SizedBox(

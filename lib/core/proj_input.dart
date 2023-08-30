@@ -58,6 +58,9 @@ class _ProjInputState extends State<ProjInput> {
               EdgeInsetsDirectional.only(start: 34.w, top: 18.h, bottom: 19.h),
           hintText: widget.hintText,
           labelText: widget.label,
+          helperText: widget.isPassword
+              ? 'Password must have capital and special characters'
+              : null,
           filled: true,
           fillColor: const Color(0xffF2F2F2),
           hintStyle: TextStyle(color: const Color(0xffB6B7B7), fontSize: 14.sp),

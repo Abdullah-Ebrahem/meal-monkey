@@ -86,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   height: 11.h,
                 ),
                 Text(
-                  'Hi there ${CacheHelper.getName().split(' ').join()}',
+                  'Hi there ${CacheHelper.getName().split(' ').first}',
                   style: TextStyle(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.bold,

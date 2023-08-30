@@ -11,6 +11,7 @@ class MasterCubit extends Cubit<MasterStates> {
   MasterCubit() : super(MasterInitialState());
 
   static MasterCubit getObject(context) => BlocProvider.of(context);
+  int currentIndex = 0;
   var screens = [
     const MenuScreen(),
     LatestOffersScreen(),

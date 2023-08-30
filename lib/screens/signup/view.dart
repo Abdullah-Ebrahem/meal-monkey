@@ -75,7 +75,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       keyBoardType: TextInputType.phone,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'write a name';
+                          return 'required';
                         }
                         return null;
                       },
@@ -119,12 +119,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     hintText: 'Confirm Password',
                     isLastInput: true,
                   ),
-                  ProjButton(
-                    title: 'Sign Up',
-                    onPress: () {
-                      cubit.register();
-                    },
-                  ),
+                  BlocConsumer<SignupCubit, SignupStates>(
+                      listener: (context, state) {
+                    if (state is SignupFaildState) {
+                      showMsg(msg: state.msg);
+                    } else if (state is SignupSuccessState) {
+                      showMsg(msg: state.msg);
+                    }
+                  }, builder: (context, state) {
+                    if (state is SignupLoadingState) {
+                      return const CircularProgressIndicator();
+                    }
+                    return ProjButton(
+                      title: 'Sign Up',
+                      onPress: () {
+                        cubit.register();
+                      },
+                    );
+                  }),
                   SizedBox(
                     height: 24.h,
                   ),

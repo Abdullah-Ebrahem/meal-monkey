@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/cache_helper.dart';
-import 'package:flutter_application_1/screens/splash/splash.dart';
+import 'package:flutter_application_1/screens/splash/view.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/methods.dart';
 

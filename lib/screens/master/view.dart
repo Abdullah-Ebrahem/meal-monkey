@@ -15,7 +15,6 @@ class MasterScreen extends StatefulWidget {
 }
 
 class _MasterScreenState extends State<MasterScreen> {
-  int currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -47,11 +46,11 @@ class _MasterScreenState extends State<MasterScreen> {
             floatingActionButton: BlocBuilder<MasterCubit, MasterStates>(
               builder: (context, state) => FloatingActionButton(
                   onPressed: () {
-                    currentIndex = 4;
+                    controller.currentIndex = 4;
                     controller.iSelected();
                     // setState(() {});
                   },
-                  backgroundColor: currentIndex == 4
+                  backgroundColor: controller.currentIndex == 4
                       ? const Color(0xffFC6011)
                       : const Color(0xffB6B7B7),
                   foregroundColor: Colors.white,
@@ -65,7 +64,7 @@ class _MasterScreenState extends State<MasterScreen> {
             body: BlocBuilder<MasterCubit, MasterStates>(
               builder: (context, state) => Padding(
                 padding: const EdgeInsetsDirectional.only(bottom: 50),
-                child: controller.screens[currentIndex],
+                child: controller.screens[controller.currentIndex],
               ),
             ),
             bottomNavigationBar: Container(
@@ -88,11 +87,11 @@ class _MasterScreenState extends State<MasterScreen> {
                         controller.icons.length,
                         (index) => BlocBuilder<MasterCubit, MasterStates>(
                               builder: (context, state) => ItemBottom(
-                                  isSelected: currentIndex == index,
+                                  isSelected: controller.currentIndex == index,
                                   icon: controller.icons[index],
                                   title: controller.titles[index],
                                   ontap: () {
-                                    currentIndex = index;
+                                    controller.currentIndex = index;
                                     controller.iSelected();
                                     // setState(() {});
                                   }),
