@@ -67,6 +67,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'required';
+                        } else if (!value.endsWith('@gmail.com')) {
+                          return 'email must end with @gmail.com';
                         }
                         return null;
                       },
@@ -76,6 +78,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'required';
+                        } else if (value.length != 11) {
+                          return 'phone number must be 11 numbers';
                         }
                         return null;
                       },
@@ -98,6 +102,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return 'required';
+                        } else if (value.length < 8) {
+                          return 'password must be atleast 8 digits';
                         }
                         return null;
                       },

@@ -3,6 +3,7 @@ import 'package:flutter_application_1/screens/home/components/item_bottom.dart';
 import 'package:flutter_application_1/screens/home/components/item_most_popular.dart';
 import 'package:flutter_application_1/screens/home/components/item_recent.dart';
 import 'package:flutter_application_1/screens/home/components/item_restaurents.dart';
+import 'package:flutter_application_1/screens/home/components/item_title.dart';
 import 'package:flutter_application_1/screens/home/controller.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -74,70 +75,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               SizedBox(
-                height: 58.h,
+                height: 25.h,
               ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 21.w,
-                  ),
-                  Text(
-                    'Popular Restaurents',
-                    style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                        color: const Color(0xff4A4B4D)),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'View all',
-                    style: TextStyle(
-                        color: const Color(0xffFC6011), fontSize: 13.sp),
-                  ),
-                  SizedBox(
-                    width: 21.w,
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 32.h,
-              ),
+              ItemTitle(title: 'Popular Restaurents', children: [
+                ItemRestaurent(model: cubit.models[2], isLast: false)
+              ]),
               Column(
                 children: List.generate(
-                    cubit.models.length,
+                    2,
                     (index) => ItemRestaurent(
                         model: cubit.models[index],
-                        isLast: index == cubit.models.length - 1)),
+                        isLast: index == cubit.models.length - 2)),
               ),
               SizedBox(
-                height: 42.8.h,
+                height: 22.8.h,
               ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 21.w,
-                  ),
-                  Text(
-                    'Most Popular',
-                    style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                        color: const Color(0xff4A4B4D)),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'View all',
-                    style: TextStyle(
-                        color: const Color(0xffFC6011), fontSize: 13.sp),
-                  ),
-                  SizedBox(
-                    width: 21.w,
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 33.h,
-              ),
+              const ItemTitle(title: 'Most Popular', children: []),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
@@ -150,36 +103,12 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(
                 height: 37.h,
               ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: 21.w,
-                  ),
-                  Text(
-                    'Recent Items',
-                    style: TextStyle(
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.bold,
-                        color: const Color(0xff4A4B4D)),
-                  ),
-                  const Spacer(),
-                  Text(
-                    'View all',
-                    style: TextStyle(
-                        color: const Color(0xffFC6011), fontSize: 13.sp),
-                  ),
-                  SizedBox(
-                    width: 21.w,
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 26.h,
-              ),
-              ItemRecent(
-                  imgUrl: 'assets/images/pizza.png',
-                  title: 'Mulberry Pizza by Josh',
-                  subTitle: ' Western Food'),
+              ItemTitle(title: 'Recent Items', children: [
+                ItemRecent(
+                    imgUrl: 'assets/images/pizza.png',
+                    title: 'Mulberry Pizza by Josh',
+                    subTitle: ' Western Food'),
+              ]),
               ItemRecent(
                   imgUrl: 'assets/images/cafe.png',
                   title: 'Barita',

@@ -23,6 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
       const Duration(seconds: 3),
       () {
         navigateTo(
+            withHistory: false,
             page: CacheHelper.getIfFirstTime()
                 ? const OnBoardingScreen()
                 : CacheHelper.getToken().isEmpty

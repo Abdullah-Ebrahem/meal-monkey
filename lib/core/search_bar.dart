@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/custom_search_delegate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchBarCustom extends StatelessWidget implements PreferredSizeWidget {
@@ -14,6 +15,9 @@ class SearchBarCustom extends StatelessWidget implements PreferredSizeWidget {
       height: 45.h,
       margin: EdgeInsetsDirectional.only(start: 21.w, end: 21.w, bottom: 2.h),
       child: TextFormField(
+        onTap: () {
+          showSearch(context: context, delegate: CustomSearchDelegate());
+        },
         decoration: InputDecoration(
             contentPadding:
                 const EdgeInsetsDirectional.only(top: 12, bottom: 14),

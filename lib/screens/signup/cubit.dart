@@ -26,7 +26,7 @@ class SignupCubit extends Cubit<SignupStates> {
             await Dio(BaseOptions(receiveDataWhenStatusError: true))
                 .post('https://roaya-lab.onrender.com/signUp', data: {
           'firstName': nameController.text,
-          'lastName': nameController.text,
+          'lastName': nameController.text.split(' ').last,
           'email': emailController.text,
           'password': passwordController.text,
           'confirmPassword': confirmPasswordController.text

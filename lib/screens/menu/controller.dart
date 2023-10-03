@@ -20,9 +20,15 @@ class MenuCubit {
   ];
 
   var screens = const [
-    DessertsScreen(),
-    DessertsScreen(),
-    DessertsScreen(),
-    DessertsScreen()
+    DessertsScreen(title: 'Food'),
+    DessertsScreen(
+      title: 'Beverages',
+    ),
+    DessertsScreen(
+      title: 'Desserts',
+    ),
+    DessertsScreen(
+      title: 'Promotions',
+    )
   ];
 }

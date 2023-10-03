@@ -75,7 +75,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (value!.isEmpty) {
                         return 'Password is required';
                       } else if (value.length < 8) {
-                        return 'Password must be greater than 8 digits';
+                        return 'Password must be atleast 8 digits';
                       }
                       return null;
                     },

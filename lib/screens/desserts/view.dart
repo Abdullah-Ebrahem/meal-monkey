@@ -5,7 +5,8 @@ import 'package:flutter_application_1/screens/desserts/cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DessertsScreen extends StatefulWidget {
-  const DessertsScreen({super.key});
+  final String title;
+  const DessertsScreen({super.key, required this.title});
 
   @override
   State<DessertsScreen> createState() => _DessertsScreenState();
@@ -30,8 +31,8 @@ class _DessertsScreenState extends State<DessertsScreen> {
               ),
             ),
           ),
-          title: const Text(
-            'Desserts',
+          title: Text(
+            widget.title,
           ),
           bottom: const SearchBarCustom(),
         ),

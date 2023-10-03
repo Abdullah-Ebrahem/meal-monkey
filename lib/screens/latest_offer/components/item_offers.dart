@@ -81,7 +81,7 @@ class ItemOffer extends StatelessWidget {
                                     allowHalfRating: true,
                                     itemCount: 5,
                                     itemPadding:
-                                        EdgeInsets.symmetric(horizontal: 4.0.w),
+                                        EdgeInsets.symmetric(horizontal: 3.0.w),
                                     itemBuilder: (context, _) => const Icon(
                                       Icons.star,
                                       color: Colors.amber,
@@ -97,7 +97,7 @@ class ItemOffer extends StatelessWidget {
                             child: Icon(
                               Icons.star,
                               color: const Color(0xffFC6011),
-                              size: 14.19.h,
+                              size: 14.5.h,
                             ),
                           ),
                           SizedBox(

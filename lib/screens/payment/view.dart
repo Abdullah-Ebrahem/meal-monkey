@@ -125,7 +125,7 @@ class PaymentScreen extends StatelessWidget {
                                 side: BorderSide(
                                     width: 1.w,
                                     color: Theme.of(context).primaryColor),
-                                fixedSize: Size(86.w, 30.h),
+                                fixedSize: Size(95.w, 30.h),
                                 shape: const StadiumBorder(),
                               ),
                               child: Text(
@@ -133,7 +133,8 @@ class PaymentScreen extends StatelessWidget {
                                 style: TextStyle(
                                     color: Theme.of(context).primaryColor,
                                     fontSize: 11.sp,
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.bold,
+                                    overflow: TextOverflow.visible),
                               ),
                             ),
                           ],
